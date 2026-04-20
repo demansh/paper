@@ -2,6 +2,7 @@ title: "Paper Project"
 description: "A minimalist bilingual (RU/EN) threaded journal built with Jekyll."
 baseurl: ""
 url: "https://example.com"
+image: /assets/images/android-chrome-512x512.png
 
 lang: en
 default_lang: en

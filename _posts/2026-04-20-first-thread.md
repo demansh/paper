@@ -2,6 +2,8 @@
 title: "Morning Notes"
 date: 2026-04-20 09:00:00 +0400
 description: "A small bilingual thread to kick things off."
+logo: /assets/images/favicon-32x32.png
+layout: post
 articles:
   - ru:
       text: |
