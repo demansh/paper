@@ -1,0 +1,25 @@
+{% assign post = include.post %}
+<article class="thread">
+  <header class="thread-header">
+    <h1 class="thread-title">{{ post.title }}</h1>
+    <time class="thread-date" datetime="{{ post.date | date_to_xmlschema }}">
+      {{ post.date | date: "%Y-%m-%d" }}
+    </time>
+  </header>
+
+  {% for article in post.articles %}
+    <section class="article">
+      {% if article.image %}
+        <figure class="article-image">
+          <img src="{{ article.image | relative_url }}" alt="" loading="lazy">
+        </figure>
+      {% endif %}
+      {% if article.ru.text %}
+        <div class="lang lang-ru">{{ article.ru.text | markdownify }}</div>
+      {% endif %}
+      {% if article.en.text %}
+        <div class="lang lang-en">{{ article.en.text | markdownify }}</div>
+      {% endif %}
+    </section>
+  {% endfor %}
+</article>

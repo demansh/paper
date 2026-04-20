@@ -1,0 +1,24 @@
+---
+layout: default
+title: "Home"
+---
+{% assign latest = site.posts.first %}
+{% assign prev_post = site.posts[1] %}
+
+{% if latest %}
+  {% include thread-body.html post=latest %}
+
+  <nav class="post-nav">
+    {% if prev_post %}
+      <a class="nav-prev" href="{{ prev_post.url | relative_url }}">
+        <span class="lang lang-ru">← Предыдущий пост</span>
+        <span class="lang lang-en">← Previous post</span>
+      </a>
+    {% endif %}
+  </nav>
+{% else %}
+  <p class="empty">
+    <span class="lang lang-ru">Постов пока нет.</span>
+    <span class="lang lang-en">No posts yet.</span>
+  </p>
+{% endif %}

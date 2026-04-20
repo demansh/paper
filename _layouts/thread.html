@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% include thread-body.html post=page %}
+
+{% assign posts = site.posts %}
+{% for p in posts %}
+  {% if p.url == page.url %}
+    {% assign idx = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_idx = idx | plus: 1 %}
+{% assign prev_post = posts[prev_idx] %}
+
+<nav class="post-nav">
+  {% if prev_post %}
+    <a class="nav-prev" href="{{ prev_post.url | relative_url }}">
+      <span class="lang lang-ru">← Предыдущий пост</span>
+      <span class="lang lang-en">← Previous post</span>
+    </a>
+  {% endif %}
+</nav>
