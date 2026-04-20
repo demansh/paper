@@ -35,6 +35,13 @@
     </div>
   </header>
 
+  <div class="weather-container">
+    {% include weather-widget.html %}
+  </div>
+  <div class="currency-container">
+    {% include currency-widget.html %}
+  </div>
+
   <main class="site-main">
     {{ content }}
   </main>
