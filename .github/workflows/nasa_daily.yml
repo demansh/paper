@@ -2,8 +2,8 @@ name: Daily NASA Post
 
 on:
   schedule:
-    - cron: '0 2 * * *' # 06:00 AM AMT (Erevan)
-  workflow_dispatch: # Чтобы можно было запустить вручную кнопкой в GitHub
+    - cron: '0 2 * * *' 
+  workflow_dispatch:
 
 jobs:
   build:
@@ -30,6 +30,5 @@ jobs:
           git config --global user.name "Aleksey Demshin"
           git config --global user.email "demansh17@gmail.com"
           git add _posts/
-          # Если изменений нет (например, запуск дважды в день), экшн не упадет с ошибкой
           git commit -m "Add NASA APOD post: $(date +'%Y-%m-%d')" || exit 0
-          git push
+          git push origin master
