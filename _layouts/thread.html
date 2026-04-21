@@ -12,9 +12,14 @@ layout: default
 
 {% assign prev_idx = idx | plus: 1 %}
 {% assign prev_post = posts[prev_idx] %}
+{% assign next_idx = idx | minus: 1 %}
+{% assign next_post = posts[next_idx] %}
 
 <nav class="post-nav">
   {% if prev_post %}
     <a class="nav-prev" href="{{ prev_post.url | relative_url }}">← Предыдущий пост</a>
+  {% endif %}
+  {% if idx > 0 and next_post %}
+    <a class="nav-next" href="{{ next_post.url | relative_url }}">Следующий пост →</a>
   {% endif %}
 </nav>

@@ -5,6 +5,7 @@ baseurl: "/paper"
 image: /assets/images/android-chrome-512x512.png
 
 lang: ru
+future: true
 
 plugins:
   - jekyll-seo-tag

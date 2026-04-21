@@ -1,7 +1,7 @@
 ---
-title: "Утренние заметки"
-date: 2026-04-20 09:00:00 +0400
-description: "Небольшой тред, чтобы начать."
+title: "Утренние заметки 2"
+date: 2026-04-21 09:00:00 +0400
+description: "Второй тред, чтобы начать."
 logo: /assets/images/favicon-32x32.png
 articles:
   - text: |
