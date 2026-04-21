@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en' }}">
+<html lang="{{ site.lang | default: 'ru' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,9 +15,7 @@
     (function () {
       try {
         var t = localStorage.getItem('paper.theme') || 'light';
-        var l = localStorage.getItem('paper.lang') || '{{ site.default_lang | default: "en" }}';
         document.documentElement.setAttribute('data-theme', t);
-        document.documentElement.setAttribute('data-lang', l);
       } catch (e) {}
     })();
   </script>
@@ -26,10 +24,7 @@
   <header class="site-header">
     <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <div class="toggles">
-      <button class="toggle toggle-lang" type="button" aria-label="Toggle language">
-        <span data-lang-label="ru">RU</span><span class="sep">/</span><span data-lang-label="en">EN</span>
-      </button>
-      <button class="toggle toggle-theme" type="button" aria-label="Toggle theme">
+      <button class="toggle toggle-theme" type="button" aria-label="Переключить тему">
         <span data-theme-label="light">☀</span><span data-theme-label="dark">☾</span>
       </button>
     </div>

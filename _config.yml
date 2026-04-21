@@ -1,11 +1,10 @@
 title: "Paper Project"
-description: "A minimalist bilingual (RU/EN) threaded journal built with Jekyll."
+description: "Минималистичный тредовый журнал на Jekyll."
 url: "https://demansh.github.io"
 baseurl: "/paper"
 image: /assets/images/android-chrome-512x512.png
 
-lang: en
-default_lang: en
+lang: ru
 
 plugins:
   - jekyll-seo-tag

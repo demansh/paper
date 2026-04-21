@@ -14,11 +14,8 @@
           <img src="{{ article.image | relative_url }}" alt="" loading="lazy">
         </figure>
       {% endif %}
-      {% if article.ru.text %}
-        <div class="lang lang-ru">{{ article.ru.text | markdownify }}</div>
-      {% endif %}
-      {% if article.en.text %}
-        <div class="lang lang-en">{{ article.en.text | markdownify }}</div>
+      {% if article.text %}
+        {{ article.text | markdownify }}
       {% endif %}
     </section>
   {% endfor %}

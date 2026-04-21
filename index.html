@@ -10,15 +10,9 @@ title: "Home"
 
   <nav class="post-nav">
     {% if prev_post %}
-      <a class="nav-prev" href="{{ prev_post.url | relative_url }}">
-        <span class="lang lang-ru">← Предыдущий пост</span>
-        <span class="lang lang-en">← Previous post</span>
-      </a>
+      <a class="nav-prev" href="{{ prev_post.url | relative_url }}">← Предыдущий пост</a>
     {% endif %}
   </nav>
 {% else %}
-  <p class="empty">
-    <span class="lang lang-ru">Постов пока нет.</span>
-    <span class="lang lang-en">No posts yet.</span>
-  </p>
+  <p class="empty">Постов пока нет.</p>
 {% endif %}

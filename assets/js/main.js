@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEYS = { theme: 'paper.theme', lang: 'paper.lang' };
+  var STORAGE_KEYS = { theme: 'paper.theme' };
   var root = document.documentElement;
 
   function safeGet(key, fallback) {
@@ -18,28 +18,13 @@
     safeSet(STORAGE_KEYS.theme, theme);
   }
 
-  function applyLang(lang) {
-    root.setAttribute('data-lang', lang);
-    root.setAttribute('lang', lang);
-    safeSet(STORAGE_KEYS.lang, lang);
-  }
-
-  var initialTheme = safeGet(STORAGE_KEYS.theme, 'light');
-  var initialLang = safeGet(STORAGE_KEYS.lang, root.getAttribute('data-lang') || 'en');
-  applyTheme(initialTheme);
-  applyLang(initialLang);
+  applyTheme(safeGet(STORAGE_KEYS.theme, 'light'));
 
   document.addEventListener('click', function (evt) {
     var themeBtn = evt.target.closest('.toggle-theme');
     if (themeBtn) {
       var nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       applyTheme(nextTheme);
-      return;
-    }
-    var langBtn = evt.target.closest('.toggle-lang');
-    if (langBtn) {
-      var nextLang = root.getAttribute('data-lang') === 'ru' ? 'en' : 'ru';
-      applyLang(nextLang);
     }
   });
 })();

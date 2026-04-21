@@ -1,27 +1,15 @@
 ---
-title: "Morning Notes"
+title: "Утренние заметки"
 date: 2026-04-20 09:00:00 +0400
-description: "A small bilingual thread to kick things off."
+description: "Небольшой тред, чтобы начать."
 logo: /assets/images/favicon-32x32.png
 layout: post
 articles:
-  - ru:
-      text: |
-        Первая запись. Пишу короткими заметками — одна мысль на карточку.
-    en:
-      text: |
-        First entry. Writing in short notes — one thought per card.
+  - text: |
+      Первая запись. Пишу короткими заметками — одна мысль на карточку.
   - image: "/assets/images/placeholder.svg"
-    ru:
-      text: |
-        Иногда к заметке прикладываю картинку. Это необязательно.
-    en:
-      text: |
-        Sometimes I attach an image. It is optional.
-  - ru:
-      text: |
-        Переключай язык в шапке — текст поменяется без перезагрузки.
-    en:
-      text: |
-        Toggle the language in the header — the text switches without a reload.
+    text: |
+      Иногда к заметке прикладываю картинку. Это необязательно.
+  - text: |
+      Темы переключаются в шапке — оформление меняется без перезагрузки.
 ---
