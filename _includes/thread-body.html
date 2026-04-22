@@ -1,22 +1,28 @@
 {% assign post = include.post %}
+{% assign link_title = include.link_title %}
 <article class="thread">
   <header class="thread-header">
-    <h1 class="thread-title">{{ post.title }}</h1>
+    {% if post.title_en %}
+      <h1 class="thread-title lang-en">
+        {% if link_title %}<a href="{{ post.url | relative_url }}">{{ post.title_en }}</a>{% else %}{{ post.title_en }}{% endif %}
+      </h1>
+    {% endif %}
+    {% if post.title_ru %}
+      <h1 class="thread-title lang-ru">
+        {% if link_title %}<a href="{{ post.url | relative_url }}">{{ post.title_ru }}</a>{% else %}{{ post.title_ru }}{% endif %}
+      </h1>
+    {% endif %}
     <time class="thread-date" datetime="{{ post.date | date_to_xmlschema }}">
       {{ post.date | date: "%Y-%m-%d" }}
     </time>
   </header>
 
-  {% for article in post.articles %}
-    <section class="article">
-      {% if article.image %}
-        <figure class="article-image">
-          <img src="{{ article.image | relative_url }}" alt="" loading="lazy">
-        </figure>
-      {% endif %}
-      {% if article.text %}
-        {{ article.text | markdownify }}
-      {% endif %}
-    </section>
-  {% endfor %}
+  <section class="article">
+    {% if post.image %}
+      <figure class="article-image">
+        <img src="{{ post.image | relative_url }}" alt="" loading="lazy">
+      </figure>
+    {% endif %}
+    {{ post.content }}
+  </section>
 </article>

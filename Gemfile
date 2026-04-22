@@ -4,6 +4,7 @@ gem "jekyll", "~> 4.4.1"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag", "~> 2.8"
+  gem "jekyll-paginate", "~> 1.1"
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do

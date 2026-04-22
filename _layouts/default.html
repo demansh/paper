@@ -16,6 +16,11 @@
       try {
         var t = localStorage.getItem('paper.theme') || 'light';
         document.documentElement.setAttribute('data-theme', t);
+        var q = new URLSearchParams(window.location.search).get('lang');
+        var l = (q === 'en' || q === 'ru')
+          ? q
+          : (localStorage.getItem('paper.lang') || '{{ site.lang | default: "ru" }}');
+        document.documentElement.setAttribute('data-lang', l);
       } catch (e) {}
     })();
   </script>
@@ -24,6 +29,9 @@
   <header class="site-header">
     <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <div class="toggles">
+      <button class="toggle toggle-lang" type="button" aria-label="Switch language">
+        <span data-lang-label="ru">RU</span><span data-lang-label="en">EN</span>
+      </button>
       <button class="toggle toggle-theme" type="button" aria-label="Переключить тему">
         <span data-theme-label="light">☀</span><span data-theme-label="dark">☾</span>
       </button>

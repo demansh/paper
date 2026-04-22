@@ -2,17 +2,32 @@
 layout: default
 title: "Home"
 ---
-{% assign latest = site.posts.first %}
-{% assign prev_post = site.posts[1] %}
+{% if paginator.posts.size > 0 %}
+  <div class="feed">
+    {% for post in paginator.posts %}
+      {% include thread-body.html post=post link_title=true %}
+    {% endfor %}
+  </div>
 
-{% if latest %}
-  {% include thread-body.html post=latest %}
-
-  <nav class="post-nav">
-    {% if prev_post %}
-      <a class="nav-prev" href="{{ prev_post.url | relative_url }}">← Предыдущий пост</a>
-    {% endif %}
-  </nav>
+  {% if paginator.total_pages > 1 %}
+    <nav class="post-nav">
+      {% if paginator.previous_page %}
+        <a class="nav-prev" href="{{ paginator.previous_page_path | relative_url }}">
+          <span class="lang-ru">← Новее</span>
+          <span class="lang-en">← Newer</span>
+        </a>
+      {% endif %}
+      {% if paginator.next_page %}
+        <a class="nav-next" href="{{ paginator.next_page_path | relative_url }}">
+          <span class="lang-ru">Старее →</span>
+          <span class="lang-en">Older →</span>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
 {% else %}
-  <p class="empty">Постов пока нет.</p>
+  <p class="empty">
+    <span class="lang-ru">Постов пока нет.</span>
+    <span class="lang-en">No posts yet.</span>
+  </p>
 {% endif %}

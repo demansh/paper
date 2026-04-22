@@ -83,6 +83,13 @@ a:hover { text-decoration: underline; }
 [data-theme="light"] .toggle-theme [data-theme-label="dark"] { display: inline; }
 [data-theme="dark"] .toggle-theme [data-theme-label="light"] { display: inline; }
 
+.toggle-lang [data-lang-label] { display: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em; }
+[data-lang="ru"] .toggle-lang [data-lang-label="en"] { display: inline; }
+[data-lang="en"] .toggle-lang [data-lang-label="ru"] { display: inline; }
+
+[data-lang="ru"] .lang-en { display: none; }
+[data-lang="en"] .lang-ru { display: none; }
+
 .site-main {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -137,6 +144,14 @@ a:hover { text-decoration: underline; }
 }
 
 .empty { color: var(--muted); text-align: center; padding: 2rem 0; }
+
+.feed .thread + .thread {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.thread-title a { color: inherit; text-decoration: none; }
+.thread-title a:hover { text-decoration: underline; }
 
 @media (min-width: 720px) {
   html, body { font-size: 18px; }
