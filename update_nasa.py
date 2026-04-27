@@ -16,15 +16,23 @@ def create_post():
         return
 
     data = response.json()
-    date_obj = datetime.datetime.now()
-    date_str = date_obj.strftime("%Y-%m-%d")
-    jekyll_date = date_obj.strftime("%Y-%m-%d 06:00:00 +0400")
+
+    nasa_date_str = data.get("date") 
+    if not nasa_date_str:
+        print("Error: Could not find date in NASA response")
+        return
+
+    current_full_time = datetime.datetime.now().astimezone().strftime("%H:%M:%S %z")
+    jekyll_date = f"{nasa_date_str} {current_full_time}"
 
     title = data.get("title", "NASA Photo of the Day")
     image_url = data.get("url", "")
     explanation = data.get("explanation", "").strip()
 
-    file_name = f"_posts/{date_str}-nasa-apod.md"
+    file_name = f"_posts/{nasa_date_str}-nasa-apod.md"
+    if os.path.exists(file_name):
+        print(f"Skip: {file_name} already exists. NASA hasn't updated the photo yet.")
+        return
 
     content = f"""---
 layout: thread
