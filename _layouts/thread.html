@@ -17,9 +17,11 @@ layout: default
 
 <nav class="post-nav">
   {% if prev_post %}
-    <a class="nav-prev" href="{{ prev_post.url | relative_url }}">← Предыдущий пост</a>
+    <a class="nav-prev lang-ru" href="{{ prev_post.url | relative_url }}">← Предыдущий пост</a>
+    <a class="nav-prev lang-en" href="{{ prev_post.url | relative_url }}">← Older post</a>
   {% endif %}
   {% if idx > 0 and next_post %}
-    <a class="nav-next" href="{{ next_post.url | relative_url }}">Следующий пост →</a>
+    <a class="nav-next lang-ru" href="{{ next_post.url | relative_url }}">Следующий пост →</a>
+    <a class="nav-next lang-en" href="{{ next_post.url | relative_url }}">Newer post →</a>
   {% endif %}
 </nav>
