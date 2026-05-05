@@ -1,9 +1,12 @@
 import datetime
 import os
+import logging
 
 import requests
 from dotenv import load_dotenv
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 load_dotenv()
 NASA_API_KEY = os.getenv("NASA_API_KEY", "DEMO_KEY")
 url = f"https://api.nasa.gov/planetary/apod?api_key={NASA_API_KEY}"
@@ -12,14 +15,17 @@ url = f"https://api.nasa.gov/planetary/apod?api_key={NASA_API_KEY}"
 def create_post():
     response = requests.get(url)
     if response.status_code != 200:
-        print(f"Error: NASA API returned {response.status_code}")
+        logger.error(f"Error: NASA API returned {response.status_code}")
         return
 
     data = response.json()
+    if data.get("media_type") != "image":
+        logger.info("Skip: Not an image data type")
+        return
 
     nasa_date_str = data.get("date") 
     if not nasa_date_str:
-        print("Error: Could not find date in NASA response")
+        logger.error("Error: Could not find date in NASA response")
         return
 
     current_full_time = datetime.datetime.now().astimezone().strftime("%H:%M:%S %z")
@@ -27,11 +33,14 @@ def create_post():
 
     title = data.get("title", "NASA Photo of the Day")
     image_url = data.get("url", "")
+    if not image_url:
+        logger.info("Skip: No image URL found in NASA response.")
+        return
     explanation = data.get("explanation", "").strip()
 
     file_name = f"_posts/{nasa_date_str}-nasa-apod.md"
     if os.path.exists(file_name):
-        print(f"Skip: {file_name} already exists. NASA hasn't updated the photo yet.")
+        logger.info(f"Skip: {file_name} already exists. NASA hasn't updated the photo yet.")
         return
 
     content = f"""---
@@ -50,7 +59,7 @@ image: "{image_url}"
 """
     with open(file_name, "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"Success: {file_name} created.")
+    logger.info(f"Success: {file_name} created.")
 
 
 if __name__ == "__main__":
