@@ -38,6 +38,7 @@ def create_post():
 
     title = data.get("title", "NASA Photo of the Day")
     title_ru = translate_to_russian(title)
+
     image_url = data.get("url", "")
     if not image_url:
         logger.info("Skip: No image URL found in NASA response.")
@@ -45,19 +46,27 @@ def create_post():
     explanation = data.get("explanation", "").strip()
     explanation_ru = translate_to_russian(explanation)
 
+    date_slug = nasa_date_str.replace("-", "")[2:]
+    original_url = f"https://apod.nasa.gov/apod/ap{date_slug}.html"
+
     content = f"""---
 layout: thread
 title_en: "NASA: {title}"
 title_ru: "NASA: {title_ru}"
 date: {jekyll_date}
 image: "{image_url}"
+original_url: "{original_url}"
 ---
 <div class="lang-en" markdown="1">
 {explanation}
+
+[Read on NASA APOD]({original_url})
 </div>
 
 <div class="lang-ru" markdown="1">
 {explanation_ru}
+
+[Источник: NASA APOD]({original_url})
 </div>
 """
     with open(file_name, "w", encoding="utf-8") as f:
