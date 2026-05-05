@@ -22,6 +22,9 @@ exclude:
   - .bundle/
   - node_modules/
   - README.md
+  - update_nasa.py
+  - translate_nasa.py
+  - requirements.txt
 
 defaults:
   - scope:
