@@ -23,6 +23,9 @@ jobs:
       - name: Run NASA script
         env:
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NASA_GEMINI_PROMPT: ${{ secrets.NASA_GEMINI_PROMPT }}
+          NASA_GEMINI_MODEL: ${{ secrets.NASA_GEMINI_MODEL }}
         run: python update_nasa.py
 
       - name: Commit and Push changes
